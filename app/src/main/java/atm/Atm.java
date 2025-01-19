@@ -22,4 +22,17 @@ public class Atm {
     loggedInUser = username;
     System.out.println("Successfully logged in as: " + loggedInUser);
   }
+
+  public void deposit(BigDecimal amount) {
+    if (loggedInUser == null) {
+      throw new IllegalStateException("You must logged in before doing deposit");
+    }
+
+    if (amount < 0) {
+      throw new IllegalArgumentException("Balance should not be lower than 0");
+    }
+
+    BigDecimal currentBalance = users.get(loggedInUser);
+    users.put(loggedInUser, currentBalance + amount);
+  }
 }
