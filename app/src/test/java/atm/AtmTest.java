@@ -45,4 +45,33 @@ public class AtmTest {
     assertDoesNotThrow(() -> atm.login("chris"));
     assertThrows(IllegalArgumentException.class, () -> atm.deposit(BigDecimal.valueOf(-100)));
   }
+
+  @Test
+  void testWithdrawValid() {
+    Atm atm = new Atm();
+    assertDoesNotThrow(() -> atm.login("chris"));
+    assertDoesNotThrow(() -> atm.deposit(BigDecimal.valueOf(100)));
+    assertDoesNotThrow(() -> atm.withdraw(BigDecimal.valueOf(100)));
+  }
+
+  @Test
+  void testWithdrawGreaterThanBalanceError() {
+    Atm atm = new Atm();
+    assertDoesNotThrow(() -> atm.login("chris"));
+    assertThrows(IllegalStateException.class, () -> atm.withdraw(BigDecimal.valueOf(100)));
+  }
+
+  @Test
+  void testWithdrawErrorNegativeValue() {
+    Atm atm = new Atm();
+    assertDoesNotThrow(() -> atm.login("chris"));
+    assertDoesNotThrow(() -> atm.deposit(BigDecimal.valueOf(100)));
+    assertThrows(IllegalArgumentException.class, () -> atm.withdraw(BigDecimal.valueOf(-100)));
+  }
+
+  @Test
+  void testWithdrawErrorNotLoggedIn() {
+    Atm atm = new Atm();
+    assertThrows(IllegalStateException.class, () -> atm.withdraw(BigDecimal.valueOf(100)));
+  }
 }
