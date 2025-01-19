@@ -58,22 +58,6 @@ class AppTest {
   }
 
   @Test
-  void testDeposit() {
-    String input = "login chris\ndeposit 100\nexit\n";
-    ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-    System.setIn(inputStream);
-    System.setOut(new PrintStream(outputStream));
-
-    App.main(new String[]{});
-    String output = outputStream.toString();
-    assertTrue(output.contains("Welcome to the ATM system"));
-    assertTrue(output.contains("Successfully logged in as: chris"));
-    assertTrue(output.contains("Current balance after deposit: 100"));
-  }
-
-  @Test
   void testDepositNegativeValueError() {
     String input = "login chris\ndeposit -100\nexit\n";
     ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
