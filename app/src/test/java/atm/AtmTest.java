@@ -74,4 +74,17 @@ public class AtmTest {
     Atm atm = new Atm();
     assertThrows(IllegalStateException.class, () -> atm.withdraw(BigDecimal.valueOf(100)));
   }
+
+  @Test
+  void testLogoutValid() {
+    Atm atm = new Atm();
+    assertDoesNotThrow(() -> atm.login("chris"));
+    assertDoesNotThrow(() -> atm.logout());
+  }
+
+  @Test
+  void testLogoutWithoutLogin() {
+    Atm atm = new Atm();
+    assertThrows(IllegalStateException.class, () -> atm.logout());
+  }
 }
