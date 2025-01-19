@@ -15,10 +15,12 @@ Notes: We are not allowed to use any third-party frameworks, so we will optimize
   1. Read: We will fetch record based on the name and it has to be fast as the system grows.
   2. Write: The write process has to be fast and handles race condition.
   3. Resizing: If we only utilize data structure, that means the DS has to be optimal to resize.
+
 ### 2. Deposit
   Logged in user can deposit any amounts.<br />
   Command: `deposit [amount]`<br />
 #### Key Consideration
+  1. Write: Need to handle concurrent requests, so locking mechanism is needed
 
 ### 3. Withdraw
   Logged in user can withdraw maximum of user's balance.<br />
