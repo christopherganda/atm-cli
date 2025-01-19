@@ -3,6 +3,7 @@
  */
 package atm;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class App {
@@ -19,6 +20,7 @@ public class App {
             atm.login(params[1]); // need to handle index out of bounds
             break;
           case "deposit":
+            atm.deposit(new BigDecimal(params[1]));
             break;
           case "withdraw":
             break;
