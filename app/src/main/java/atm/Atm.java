@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.User;
+import util.Formatter;
+
 public class Atm {
   private Map<String, User> users = new HashMap<String, User>();
   private User loggedInUser = null;
@@ -73,7 +76,7 @@ public class Atm {
 
     loggedInUser.subtractBalance(amount);
     receiver.addBalance(amount);
-
+    System.out.println("Transfered $" + Formatter.formatCurrency(amount) + " to " + receiverUsername);
   }
 
   public void logout() {
