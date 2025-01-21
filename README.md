@@ -37,7 +37,10 @@ Notes: We are not allowed to use any third-party frameworks, so we will optimize
 ### 5. Logout
   Logs out current logged in user.<br />
   Command: `logout`<br />
-#### Key Consideration
 
 ## Non-Functional Requirement
 1. Auto tests are required. The program will be given valid and invalid inputs, so we have to make sure to handle edge cases and errors gracefully.
+
+## Not Yet Done
+1. Handle concurrent requests and potential race conditions
+2. Unit test for owe case
