@@ -1,4 +1,4 @@
-package atm;
+package model;
 
 import java.math.BigDecimal;
 
@@ -19,11 +19,11 @@ public class User {
     return balance;
   }
 
-  public void deposit(BigDecimal amount) {
+  public void addBalance(BigDecimal amount) {
     balance = balance.add(amount);
   }
 
-  public void withdraw(BigDecimal amount) {
+  public void subtractBalance(BigDecimal amount) {
     balance = balance.subtract(amount);
   }
 }

@@ -26,11 +26,13 @@ Notes: We are not allowed to use any third-party frameworks, so we will optimize
   Logged in user can withdraw maximum of user's balance.<br />
   Command: `withdraw [amount]`<br />
 #### Key Consideration
+  1. Write: Need to handle concurrent requests, so locking mechanism is needed
 
 ### 4. Transfer
   Logged in user can transfer to other valid user with maximum of the user's balance.<br />
   Command: `transfer [name] [amount]`<br />
 #### Key Consideration
+  1. Write: Need to handle concurrent requests, so locking mechanism is needed especially when add and subtract between 2 users
 
 ### 5. Logout
   Logs out current logged in user.<br />
