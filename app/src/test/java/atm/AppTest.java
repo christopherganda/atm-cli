@@ -24,7 +24,8 @@ class AppTest {
     App.main(new String[]{});
     String output = outputStream.toString();
     assertTrue(output.contains("Welcome to the ATM system"));
-    assertTrue(output.contains("Successfully logged in as: chris"));
+    assertTrue(output.contains("Hello, chris!"));
+    assertTrue(output.contains("Your balance is $0"));
   }
 
   @Test
@@ -52,9 +53,7 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Welcome to the ATM system"));
-    assertTrue(output.contains("Successfully logged in as: chris"));
-    assertTrue(output.contains("Current balance after deposit: 100"));
+    assertTrue(output.contains("Your balance is $100"));
   }
 
   @Test
@@ -110,9 +109,7 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Welcome to the ATM system"));
-    assertTrue(output.contains("Successfully logged in as: chris"));
-    assertTrue(output.contains("Logout successfully. See you!"));
+    assertTrue(output.contains("Goodbye, chris!"));
   }
 
   @Test
@@ -140,7 +137,8 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Transfered $100 to user2"));
+    assertTrue(output.contains("Transferred $100 to user2"));
+    assertTrue(output.contains("Your balance is $0"));
   }
 
   @Test
