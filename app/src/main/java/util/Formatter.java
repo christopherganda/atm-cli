@@ -11,4 +11,8 @@ public final class Formatter {
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
     return currencyFormatter.format(amount);
   }
+
+  public static String formatCurrencyWithoutComma(BigDecimal amount) {
+    return String.format("$%.0f", amount);
+  }
 }
