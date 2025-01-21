@@ -12,6 +12,10 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
 class AppTest {
+  private static final String ERR_NO_USER_LOGGED_IN = "You must be logged in to perform this action.";
+  private static final String ERR_INVALID_AMOUNT = "Amount should be greater than or equal to 0.";
+  private static final String ERR_SELF_TRANSFER = "Cannot transfer to self.";
+  private static final String ERR_USER_NOT_FOUND = "Target user does not exist.";
   @Test
   void testLoginValid() {
     String input = "login chris\nexit\n";
@@ -67,7 +71,7 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Error: Amount should not be lower than 0"));
+    assertTrue(output.contains(ERR_INVALID_AMOUNT));
   }
 
   @Test
@@ -95,7 +99,7 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Error: You must logged in before doing deposit"));
+    assertTrue(output.contains(ERR_NO_USER_LOGGED_IN));
   }
 
   @Test
@@ -123,7 +127,7 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("System is not logged in to any user"));
+    assertTrue(output.contains(ERR_NO_USER_LOGGED_IN));
   }
 
   @Test
@@ -152,7 +156,7 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Error: You must logged in before doing transfer"));
+    assertTrue(output.contains(ERR_NO_USER_LOGGED_IN));
   }
 
   @Test
@@ -166,7 +170,7 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Error: Amount should not be lower than 0"));
+    assertTrue(output.contains(ERR_INVALID_AMOUNT));
   }
 
   @Test
@@ -180,7 +184,7 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Error: Cannot transfer to self"));
+    assertTrue(output.contains(ERR_SELF_TRANSFER));
   }
 
   @Test
@@ -194,6 +198,6 @@ class AppTest {
 
     App.main(new String[]{});
     String output = outputStream.toString();
-    assertTrue(output.contains("Error: Target user does not exist."));
+    assertTrue(output.contains(ERR_USER_NOT_FOUND));
   }
 }
