@@ -57,11 +57,15 @@ public class Atm {
 
   public void transfer(String receiverUsername, BigDecimal amount) {
     if (loggedInUser == null) {
-      throw new IllegalStateException("You must logged in before doing deposit");
+      throw new IllegalStateException("You must logged in before doing transfer");
     }
 
     if (amount.compareTo(BigDecimal.ZERO) < 0) {
       throw new IllegalArgumentException("Amount should not be lower than 0");
+    }
+
+    if (receiverUsername.equals(loggedInUser.getUsername())) {
+      throw new IllegalStateException("Cannot transfer to self");
     }
 
     User receiver = users.get(receiverUsername);
@@ -76,7 +80,7 @@ public class Atm {
 
     loggedInUser.subtractBalance(amount);
     receiver.addBalance(amount);
-    System.out.println("Transfered $" + Formatter.formatCurrency(amount) + " to " + receiverUsername);
+    System.out.println("Transfered " + Formatter.formatCurrencyWithoutComma(amount) + " to " + receiverUsername);
   }
 
   public void logout() {
