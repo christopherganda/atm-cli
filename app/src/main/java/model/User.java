@@ -1,4 +1,4 @@
-package atm;
+package model;
 
 import java.math.BigDecimal;
 
